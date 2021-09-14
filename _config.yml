@@ -101,6 +101,11 @@ collections:
 defaults:
   -
     scope:
+      path: ''
+    values:
+      image: assets/img/og_image.jpg
+  -
+    scope:
       path: ''          # An empty string here means all files in the project
       type: posts
     values:
