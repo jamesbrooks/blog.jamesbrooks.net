@@ -71,7 +71,7 @@ img_cdn: ''
 avatar: https://secure.gravatar.com/avatar/bb9d06558f0abc8d10a21fb37d3760db?s=300
 
 # boolean type, the global switch for ToC in posts.
-toc: true
+toc: false
 
 disqus:
   comments: false  # boolean type, the global switch for posts comments.
