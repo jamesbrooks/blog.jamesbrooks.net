@@ -30,3 +30,8 @@
 td.rouge-code {
   padding: 1.2rem 1.5rem;
 }
+
+// Fix ad-blocked FA icons
+.fa-feed::before {
+    content: "\f09e";
+}

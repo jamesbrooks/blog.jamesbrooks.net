@@ -1622,14 +1622,7 @@ $sidebar-display: "sidebar-display";
     }
 
     .sidebar-bottom {
-      padding-left: 3.5rem;
       width: 100%;
-
-      &.justify-content-center {
-        -webkit-box-pack: start !important;
-        -ms-flex-pack: start !important;
-        justify-content: flex-start !important;
-      }
 
       a {
         font-size: 1rem;
