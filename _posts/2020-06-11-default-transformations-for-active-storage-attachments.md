@@ -24,8 +24,6 @@ To combat this the following monkey-patch was implemented to apply default trans
 The monkey-patch to support image cropping looks like this:
 
 ```ruby
-# lib/ext/active_storage/attached.rb
-
 module ActiveStorage
   class Attached
     CROP_SETTINGS_SUFFIX = "_crop_settings".freeze
@@ -53,10 +51,9 @@ module ActiveStorage
   end
 end
 ```
+{: file='lib/ext/active_storage/attached.rb'}
 
 ```ruby
-# config/application.rb
-
 module TestApp
   class Application < Rails::Application
     # ...
@@ -67,3 +64,4 @@ module TestApp
   end
 end
 ```
+{: file='config/application.rb'}
