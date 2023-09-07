@@ -1,14 +1,13 @@
 ---
 title: Instant velocity character movement
+description: How to make a Pawn (using CharacterMovementComponent) move instantly at maximum speed
 layout: post
-category: Unreal Engine 4
+category: Unreal Engine
 tags:
-  - Unreal Engine 4
-  - UE4
+  - Unreal Engine
   - C++
 keywords:
-  - Unreal Engine 4
-  - UE4
+  - Unreal Engine
   - Character Movement
   - Velocity
   - Acceleration

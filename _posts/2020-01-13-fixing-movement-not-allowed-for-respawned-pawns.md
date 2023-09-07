@@ -1,15 +1,14 @@
 ---
 title: Fixing 'movement not allowed' for respawned pawns
+description: Fixing SimpleMove failed for movement not allowed when trying to call Simple Move to Location after respawning a multiplayer pawn
 layout: post
-category: Unreal Engine 4
+category: Unreal Engine
 tags:
-  - Unreal Engine 4
-  - UE4
+  - Unreal Engine
   - C++
   - UPathFollowingComponent
 keywords:
-  - Unreal Engine 4
-  - UE4
+  - Unreal Engine
   - UPathFollowingComponent
   - AI
   - Movement

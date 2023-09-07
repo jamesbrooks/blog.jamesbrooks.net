@@ -1,5 +1,6 @@
 ---
 title: Default transformations for ActiveStorage attachments
+description: Declare default transformations for ActiveStorage attachments
 layout: post
 category: Ruby on Rails
 tags:

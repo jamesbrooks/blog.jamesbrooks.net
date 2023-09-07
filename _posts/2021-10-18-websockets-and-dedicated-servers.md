@@ -1,15 +1,14 @@
 ---
 title: Websockets and dedicated servers
+description: Use Websockets in Unreal Engine dedicated server builds
 layout: post
-category: Unreal Engine 4
+category: Unreal Engine
 tags:
-  - Unreal Engine 4
-  - UE4
+  - Unreal Engine
   - C++
   - Websockets
 keywords:
-  - Unreal Engine 4
-  - UE4
+  - Unreal Engine
   - Websockets
   - Dedicated Server
   - Linux
@@ -22,7 +21,7 @@ keywords:
 
 Quick post!
 
-I was having trouble using [Websockets](https://docs.unrealengine.com/4.27/en-US/API/Runtime/WebSockets/) in Unreal Engine 4 when building the project as a linux dedicated server. `FWebSocketsModule::Get().CreateWebSocket` was erroring with a fatal error (invalid attempt to read memory) as `FWebSocketsModule` was `nullptr` on those builds. This was working happily in-editor.
+I was having trouble using [Websockets](https://docs.unrealengine.com/4.27/en-US/API/Runtime/WebSockets/) in Unreal Engine when building the project as a linux dedicated server. `FWebSocketsModule::Get().CreateWebSocket` was erroring with a fatal error (invalid attempt to read memory) as `FWebSocketsModule` was `nullptr` on those builds. This was working happily in-editor.
 
 The problem was that the module was not loaded for linux dedicated server build which can be fixed with the following before calling `FWebSocketsModule::Get()`:
 

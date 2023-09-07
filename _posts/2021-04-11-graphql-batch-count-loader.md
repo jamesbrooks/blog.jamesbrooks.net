@@ -1,5 +1,6 @@
 ---
 title: Count loader for graphql-batch
+description: Efficiently counting records and load associations using GraphQL Ruby
 layout: post
 category: Ruby on Rails
 tags:

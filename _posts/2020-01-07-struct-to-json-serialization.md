@@ -1,15 +1,14 @@
 ---
 title: Struct to JSON serialization
+description: How to serialize a Unreal Engine USTRUCT to JSON or deserializing JSON back to a USTRUCT
 layout: post
-category: Unreal Engine 4
+category: Unreal Engine
 tags:
-  - Unreal Engine 4
-  - UE4
+  - Unreal Engine
   - C++
   - JSON
 keywords:
-  - Unreal Engine 4
-  - UE4
+  - Unreal Engine
   - JSON
   - Serialize Struct
 ---

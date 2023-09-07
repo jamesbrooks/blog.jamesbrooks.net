@@ -1,5 +1,6 @@
 ---
 title: Enhanced broadcasting with Action Cable
+description: Render and broadcast payloads over ActionCable only to channels with active subscriptions
 layout: post
 category: Ruby on Rails
 tags:
@@ -8,7 +9,7 @@ tags:
 keywords:
   - Rails
   - Ruby
-  - ActionCable
+  - Action Cable
   - Web Sockets
   - Optimization
   - Redis
