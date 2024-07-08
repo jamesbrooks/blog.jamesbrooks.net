@@ -1,0 +1,157 @@
+[
+  
+  {
+    "title": "Access project version in Unreal Engine",
+    "url": "/posts/access-project-version-in-code/",
+    "categories": "Unreal Engine",
+    "tags": "Unreal Engine, C++, Blueprint",
+    "date": "2024-06-28 00:00:00 +0930",
+    
+
+
+
+
+
+    
+    "snippet": "If you want to access your project version in C++ or Blueprints you can implement the following simple blueprint function library method, this can be included in an existing blueprint function libr...",
+    "content": "If you want to access your project version in C++ or Blueprints you can implement the following simple blueprint function library method, this can be included in an existing blueprint function library that you might have for your project, otherwise a new one can be created.class MYGAME_API UMyFunctionLibrary : public UBlueprintFunctionLibrary{  UFUNCTION(BlueprintPure)  static FString GetProjectVersion();}FString UMyFunctionLibrary::GetProjectVersion(){  FString ProjectVersion;  GConfig-&gt;GetString(    TEXT(\"/Script/EngineSettings.GeneralProjectSettings\"),    TEXT(\"ProjectVersion\"),    ProjectVersion,    GGameIni  );  return ProjectVersion;}Now the following blueprint function can be called from any blueprint in your project to get the project version, and formatted as a string like so:"
+  },
+  
+  {
+    "title": "Steam GetAuthTicketForWebApi in Unreal Engine",
+    "url": "/posts/steam-getauthticketforwebapi-in-unreal-engine/",
+    "categories": "Unreal Engine",
+    "tags": "Unreal Engine, C++, Blueprint, Steam",
+    "date": "2024-06-27 00:00:00 +0930",
+    
+
+
+
+
+
+    
+    "snippet": "When working with Steam in Unreal Engine you may want to authenticate a player to a backend server. The Steamworks documentation on authentication recommends using the Web API for this purpose, whe...",
+    "content": "When working with Steam in Unreal Engine you may want to authenticate a player to a backend server. The Steamworks documentation on authentication recommends using the Web API for this purpose, where a client generates an auth ticket (ISteamUser::GetAuthTicketForWebApi) which is then sent to the backend server for validation (ISteamUserAuth/AuthenticateUserTicket).We want to call GetAuthTicketForWebApi from Unreal Engine and expose it to Blueprints. To do this we need to call GetLinkedAccountAuthToken from the Steam subsystem identity interface. I implement this in my game’s custom Game Instance class. Below is an example of how to do this.To generate a Web API Auth Ticket in Unreal Engine the following should be done:  Update your project’s Build.cs file to include the Steamworks, OnlineSubsystem, and OnlineSubsystemSteam modules.PublicDependencyModuleNames.AddRange(new string[] { ..., \"Steamworks\", \"OnlineSubsystem\", \"OnlineSubsystemSteam\" });  Call GetLinkedAccountAuthToken from the Steam subsystem identity interface (here I have implemented this in my custom Game Instance class with method/delegate that’s accessible from Blueprints):DECLARE_DYNAMIC_DELEGATE_TwoParams(FGetSteamAuthTicketForWebApiResponse, bool, bWasSuccessful, const FString&amp;, AuthToken);UCLASS()class MY_GAME_API UMyGameInstance : public UGameInstance{  UFUNCTION(BlueprintCallable)  static void GetSteamAuthTicketForWebApi(const FGetSteamAuthTicketForWebApiResponse&amp; Delegate);};#include \"OnlineSubsystemNames.h\"#include \"OnlineSubsystemSteam.h\"#include \"Interfaces/OnlineIdentityInterface.h\"void UMyGameInstance::GetSteamAuthTicketForWebApi(const FGetSteamAuthTicketForWebApiResponse&amp; Delegate){  FOnlineSubsystemSteam* SteamSubsystem = static_cast&lt;FOnlineSubsystemSteam*&gt;(IOnlineSubsystem::Get(STEAM_SUBSYSTEM));  if (SteamSubsystem != nullptr)  {    SteamSubsystem-&gt;GetIdentityInterface()-&gt;GetLinkedAccountAuthToken(0, TEXT(\"WebAPI:MyGame\"), IOnlineIdentity::FOnGetLinkedAccountAuthTokenCompleteDelegate::CreateLambda([Delegate](int32 LocalUserNum, bool bWasSuccessful, const FExternalAuthToken&amp; AuthToken)    {      Delegate.ExecuteIfBound(bWasSuccessful, AuthToken.TokenString);    }));  }}  Note: in the above snippet there is a hardcoded text value “WebAPI:MyGame”, which is composed of two parts separated by a colon.  The first part of this string must be WebAPI to indicate to GetLinkedAccountAuthToken that we want a Web API token from Steam.  The second part is an identity string, this can be whatever you want but the same string must be used when calling AuthenticateUserTicket on your backend server.The resulting token can then be sent to your backend server for validation. The backend server should call AuthenticateUserTicket to validate the token and ensure the player is who they say they are. Successful validation will return the player’s Steam ID."
+  },
+  
+  {
+    "title": "Enhanced broadcasting with Action Cable",
+    "url": "/posts/enhanced-broadcasting-with-actioncable/",
+    "categories": "Ruby on Rails",
+    "tags": "Ruby, Rails",
+    "date": "2023-08-25 00:00:00 +0930",
+    
+
+
+
+
+
+    
+    "snippet": "When using Action Cable sometimes it is useful to broadcast to a channel only if there are active subscriptions. This can be useful to avoid unnecessary processing and network traffic, as well as r...",
+    "content": "When using Action Cable sometimes it is useful to broadcast to a channel only if there are active subscriptions. This can be useful to avoid unnecessary processing and network traffic, as well as reduce the load on the server in cases where generating the broadcast payload is expensive (e.g. a large chunk of HTML).Recently I ran into a situation in a project where the result of an action should push real-time changes to users where the HTML payload needed to be different on a per-user basis. It was important to only broadcast to users who were currently subscribed to the channel to avoid generating unnecessary HTML payloads as the number of users that can be viewing the page can potentially be quite large.To solve this I added a monkey-patch to ActionCable::Channel::Broadcasting overwriting broadcast_to to facilitate both only broadcasting to channels with active subscriptions, as well as only generating payloads if they are actually needed for broadcast. This monkey-patch shown below allows both calling broadcast_to as originally defined (accepting a model and message) as arguments, but also allowing a block to be passed to lazy generate the message payload instead.module ActionCable::Channel::Broadcasting  module ClassMethods    def broadcast_to(model, message = nil, &amp;block)      raise ArgumentError, \"Missing message/block\" unless message || block      # Skip broadcast if no subscriptions      return unless active_subscriptions_for?(model)      # Yield message content from block if message was not provided      message ||= yield(block)      ActionCable.server.broadcast(broadcasting_for(model), message)    end    def active_subscriptions_for?(model)      channel = [        ActionCable.server.config.cable[:channel_prefix],        broadcasting_for(model)      ].compact.join(\":\")      Redis.new.pubsub(\"numsub\", channel).last.positive?    end  endendExample UsageGiven an application with multiple chat rooms with users associated with each room through a participant join model. An action could allow a message to be edited, and on successful edit the message should be broadcasted to all users in the chat room.In this case the message payload is different for each user as it contains different functionality depending on if the user is the author or an admin, so it is important to only generate the payload for users that are actively subscribed to the channel. In this example the ChatRoomMessageComponent is a View Component that renders the message HTML.# given a chat_room record with a number of associated participants in the room receiving a change to a `message` recordchat_room.participants.find_each do |participant|  ChatRoomChannel.broadcast_to(participant) do    {      action: 'update_message',      content: ApplicationController.renderer.render(        ChatRoomMessageComponent.new(message:, participant:)        layout: false      )    }  endendIn the above example the block argument passed to broadcast_to is only evaluated if there are active subscriptions for the channel, saving the application from generating the message HTML payload for users that are not actively subscribed to the channel."
+  },
+  
+  {
+    "title": "Websockets and dedicated servers",
+    "url": "/posts/websockets-and-dedicated-servers/",
+    "categories": "Unreal Engine",
+    "tags": "Unreal Engine, C++, Websockets",
+    "date": "2021-10-18 00:00:00 +1030",
+    
+
+
+
+
+
+    
+    "snippet": "Quick post!I was having trouble using Websockets in Unreal Engine when building the project as a linux dedicated server. FWebSocketsModule::Get().CreateWebSocket was erroring with a fatal error (in...",
+    "content": "Quick post!I was having trouble using Websockets in Unreal Engine when building the project as a linux dedicated server. FWebSocketsModule::Get().CreateWebSocket was erroring with a fatal error (invalid attempt to read memory) as FWebSocketsModule was nullptr on those builds. This was working happily in-editor.The problem was that the module was not loaded for linux dedicated server build which can be fixed with the following before calling FWebSocketsModule::Get():  if (!FModuleManager::Get().IsModuleLoaded(\"WebSockets\"))  {    FModuleManager::Get().LoadModule(\"WebSockets\");  }  // Call `CreateWebSocket` as usual  Socket = FWebSocketsModule::Get().CreateWebSocket(ServerURL, ServerProtocol);After FModuleManager::Get().LoadModule(\"WebSockets\") had been called the issue was resolved and the dedicated server build was able to connect to a websocket server how I expected it to."
+  },
+  
+  {
+    "title": "Count loader for graphql-batch",
+    "url": "/posts/graphql-batch-count-loader/",
+    "categories": "Ruby on Rails",
+    "tags": "Ruby, Rails, GraphQL",
+    "date": "2021-04-11 00:00:00 +0930",
+    
+
+
+
+
+
+    
+    "snippet": "When implemented a GraphQL API using GraphQL Ruby it is beneficial to ensure that executed queries don’t trigger any N+1 query problems.One (of many) solutions to this is graphql-batch which provid...",
+    "content": "When implemented a GraphQL API using GraphQL Ruby it is beneficial to ensure that executed queries don’t trigger any N+1 query problems.One (of many) solutions to this is graphql-batch which provides a means of delcaring loaders to perform batched execution, avoding N+1 query problems.A record and assocation loader is provided by default and these perform their jobs admirably, though alone they do not cover the gamut of N+1 issues that can be encountered.In this post we’ll address the issue of counting generically using CountLoader, and more explicitly associations using AssociationCountLoader.The following example type if fetched multiple times in a query (e.g. as a collection) would cause multiple queries in counting:class Types::UserType &lt; Types::BaseObject  field :name, String, null: false  field :post_count, Integer, \"blog posts authored by this user\", null: false  def post_count    object.posts.count  endendWe can resolve this issue by implementing a CountLoader and updating the typing accordingly.class CountLoader &lt; GraphQL::Batch::Loader  def initialize(model, field)    super()    @model = model    @field = field  end  def perform(ids)    counts = @model.where(@field =&gt; ids).group(@field).count    counts.each { |id, count| fulfill(id, count) }    ids.each { |id| fulfill(id, 0) unless fulfilled?(id) }  endendclass Types::UserType &lt; Types::BaseObject  field :name, String, null: false  field :post_count, Integer, \"blog posts authored by this user\", null: false  def post_count    CountLoader.for(Post, :user_id).load(object.id)  endendUsing the CountLoader above the multiple queries as a result of counting have been resolved. As can be seen the structure of CountLoader is very similar to the provided RecordLoader.Counting ActiveRecord associationsReddit user u/Owumaro suggested using an ActiveRecord association name rather than having to specify the join model and foriegn key back.The provided AssociationCountLoader reflects on the provided relationship to alleviate the need for specifying these extra implementation details (it should be less britle).class AssociationCountLoader &lt; GraphQL::Batch::Loader  def initialize(model, association_name)    super()    @model = model    @association_name = association_name  end  def perform(records)    reflection = @model.reflect_on_association(@association_name)    reflection.check_preloadable!    klass = reflection.klass    field = reflection.join_primary_key    counts = klass.where(field =&gt; records).group(field).count    records.each do |record|      record_key = record[reflection.active_record_primary_key]      fulfill(record, counts[record_key] || 0)    end  endendUsing AssociationCountLoader post_count in Types::UserType changes to:def post_count  AssociationCountLoader.for(User, :posts).load(object)end2021-04-14 Update: Implementations of the loaders shown here are being maintained at https://github.com/jamesbrooks/graphql-batch-loaders"
+  },
+  
+  {
+    "title": "Default transformations for ActiveStorage attachments",
+    "url": "/posts/default-transformations-for-active-storage-attachments/",
+    "categories": "Ruby on Rails",
+    "tags": "Rails, Ruby, ActiveStorage",
+    "date": "2020-06-11 00:00:00 +0930",
+    
+
+
+
+
+
+    
+    "snippet": "Recently I needed to crop images across a variety of models and attachments on a recent Rails project using ActiveStorage.The initial native solution was to implement methods in each of these model...",
+    "content": "Recently I needed to crop images across a variety of models and attachments on a recent Rails project using ActiveStorage.The initial native solution was to implement methods in each of these models, check to see if there are any stored crop settings, and perform cropping and any extra passed in image transformations to variant. This quickly bloated out off control.To combat this the following monkey-patch was implemented to apply default transformations to variant calls across the project. Right now it only handles the needed image cropping but would be easily extendable to a variety of other situations (e.g. checking for and calling a default_name_transformations method on the record and merging that into the provided variant transformations).The monkey-patch to support image cropping looks like this:module ActiveStorage  class Attached    CROP_SETTINGS_SUFFIX = \"_crop_settings\".freeze    def variant(transformations)      attachment.public_send(:variant, default_transformations.merge(transformations))    end  private    def default_transformations      {        crop: crop_transformation      }.compact    end    def crop_transformation      attachment_crop_settings_attribute = \"#{name}#{CROP_SETTINGS_SUFFIX}\"      return unless record.respond_to?(attachment_crop_settings_attribute)      if (crop_settings = record.send(attachment_crop_settings_attribute)).present?        w, h, x, y = crop_settings.values_at(\"w\", \"h\", \"x\", \"y\")        \"#{w}x#{h}+#{x}+#{y}\"      end    end  endendmodule TestApp  class Application &lt; Rails::Application    # ...    config.to_prepare do      require 'ext/active_storage/attached'    end  endend"
+  },
+  
+  {
+    "title": "Fixing 'movement not allowed' for respawned pawns",
+    "url": "/posts/fixing-movement-not-allowed-for-respawned-pawns/",
+    "categories": "Unreal Engine",
+    "tags": "Unreal Engine, C++, UPathFollowingComponent",
+    "date": "2020-01-13 00:00:00 +1030",
+    
+
+
+
+
+
+    
+    "snippet": "Have you ran into the issue “SimpleMove failed for X: movement not allowed” when trying to callSimple Move to Location after respawning a multiplayer pawn?After a player’s pawn has been killed and ...",
+    "content": "Have you ran into the issue “SimpleMove failed for X: movement not allowed” when trying to callSimple Move to Location after respawning a multiplayer pawn?After a player’s pawn has been killed and respawned (a new pawn spawned and possessed by the PlayerController) we were unable to call UAIBlueprintHelperLibrary::SimpleMoveToLocation with out error “movement not allowed” presenting itself. This situation would be present if you were starting with Unreal’s Top Down example project and modified it to support pawn respawning.The issue is that Simple Move To Location creates and attaches a UPathFollowingComponent to the Controller if one isn’t present. Part of the initialize of this component caches the Movement Component (UNavMovementComponent) of the currently possessed Pawn.When a new pawn is possessed by the Controller a delegate is broadcasted to update the Movement Component on the Path Following Component in OnPossess, which is ONLY ran on Authority (i.e. on the server). Ideally this delegate would also had been invoked on non-Authority as well.As a fix we can manually instruct the attached Path Following Component to update its cached Movement Component on the non-authority Player Controller at an appropriate time, e.g. OnRep_Pawn/** * UPathFollowingComponent registers only to server-only delegates for detect pawn changes. * Invoke the same functionality on the client-side.*/if (Role &lt; ROLE_Authority){  UPathFollowingComponent* PathFollowingComp = FindComponentByClass&lt;UPathFollowingComponent&gt;();  if (PathFollowingComp)  {    PathFollowingComp-&gt;UpdateCachedComponents();  }}After this change has been made SimpleMoveToLocation will function as expected!"
+  },
+  
+  {
+    "title": "Struct to JSON serialization",
+    "url": "/posts/struct-to-json-serialization/",
+    "categories": "Unreal Engine",
+    "tags": "Unreal Engine, C++, JSON",
+    "date": "2020-01-07 00:00:00 +1030",
+    
+
+
+
+
+
+    
+    "snippet": "Serializing a Unreal Engine USTRUCT to JSON or deserializing JSON back to a USTRUCT is very painless thanks to the build-in FJsonObjectConverter class. The process is performed recursively without ...",
+    "content": "Serializing a Unreal Engine USTRUCT to JSON or deserializing JSON back to a USTRUCT is very painless thanks to the build-in FJsonObjectConverter class. The process is performed recursively without any extra effort as well as having the ability to include/exclude specific properties from the serialization. Below we’ll describe the requirements for using FJsonObjectConverter as well as a practical example.RequirementsTo use FJsonObjectConverter you will need to ensure that both Json and JsonUtilities are included within PublicDependencyModuleNames in your projects Build.cs, e.g.:PublicDependencyModuleNames.AddRange(new string[] { \"Core\", \"CoreUObject\", \"Engine\", \"InputCore\", \"HeadMountedDisplay\", \"NavigationSystem\", \"AIModule\", \"Json\", \"JsonUtilities\" });You’ll also need to include the JsonObjectConverter.h header in source files where you make calls to FJsonObjectConverter, e.g.#include \"Runtime/JsonUtilities/Public/JsonObjectConverter.h\"ExampleThe examples below will use this following struct as a guide:USTRUCT()struct FPlayer{  GENERATED_BODY()  UPROPERTY()  FString Name;  UPROPERTY()  int32 Level;  UPROPERTY()  TArray&lt;FString&gt; Friends;  UPROPERTY(Transient)  FString PropertyToIgnore;};SerializationTo serialize a struct to a JSON payload use FJsonObjectConverter::UStructToJsonObjectString. This method will operate recursively, so if you have anything liked nested structs, arrays inside of arrays inside of other structs it will operate as expected. Note that the PropertyToIgnore property above is marked as Transient, this will prevent the property from being serialized. For example:FPlayer Player;Player.Name = \"Frank\";Player.Level = 3;Player.Friends.Add(\"Jeff\");Player.PropertyToIgnore = \"Gotta Go Fast\";FString JSONPayload;FJsonObjectConverter::UStructToJsonObjectString(Player, JSONPayload, 0, 0);Will result in the following JSON payload being written to the JSONPayload FString:{  \"name\": \"Frank\",  \"level\": 3,  \"friends\": [\"Jeff\"]}DeserializationTo deserialize a JSON payload back to a struct use FJsonObjectConverter::JsonObjectStringToUStruct. After this above serialization example this method works exactly how you would expect it to. For example:FString JSONPayload = \"...\";  // The actual payloadFPlayer Player;FJsonObjectConverter::JsonObjectStringToUStruct(JSONPayload, &amp;Player, 0, 0);// Player.Name == \"Frank\"// Player.Level == 3// etc..Final NotesYou will have noticed above that we are passing two 0’s as the final arguments to both methods above. These 0’s are the CheckFlags and SkipFlags respectively. These can be used to provide more fine-graned control over what properties are either included (whitelisted) or skipped (blacklisted).Above we used Transient to skip a property above without having to pass this value into SkipFlags. This is because FJsonObjectConverter uses Transient by default when no SkipFlags are specified (a very sane default)."
+  },
+  
+  {
+    "title": "Instant velocity character movement",
+    "url": "/posts/instant-velocity-character-movement/",
+    "categories": "Unreal Engine",
+    "tags": "Unreal Engine, C++",
+    "date": "2019-10-17 00:00:00 +1030",
+    
+
+
+
+
+
+    
+    "snippet": "Unreal Engine’s CharacterMovementComponent is a fantastic component for easily granting a Pawn network-replicated and client-predictive movement with a lot of functionality out of the box that ofte...",
+    "content": "Unreal Engine’s CharacterMovementComponent is a fantastic component for easily granting a Pawn network-replicated and client-predictive movement with a lot of functionality out of the box that often just works. Though sometimes the way it performs movement is not what we want.The CharacterMovementComponent primarily performs movement by acceleration and velocity and for a few different style of games (such as a MOBA, RTS or ARPG) movement-by-acceleration is often not desired as usually we would expect a pawn to have it’s velocity set to it’s maximum speed when moving, and then stop immediately once it’s reached it’s target.Depending on the game you’re building it might be reasonable to build or use a different movement component in lieu of CharacterMovementComponent, but at the same time you’d be giving up a lot of really nice out-of-the-box features CharacterMovementComponent provides such as client-prediction.It’s possible to minimise the effects of the acceleration-based movement by having MaxAcceleration and BrakingFriction set to extreme values to try and trick CharacterMovementComponent into accelerating/decellerating (almost) immediately, though this can lead to some strange edge cases when velocity doesn’t fully change in a single frame.What if we just subclass CharacterMovementComponent and stop using acceleration to determine velocity? Turns out it’s really trivial to do and we only need to override one aptly-named method: CalcVelocity. We can override CalcVelocity to perform instant changes to velocity rather than incremental.void UMyCharacterMovementComponent::CalcVelocity(float DeltaTime, float Friction, bool bFluid, float BrakingDeceleration){  // There may/may-not be some times you want to call super.  // have a look through CalcVelocity to find out. We'll call super here just in case.  Super::CalcVelocity(DeltaTime, Friction, bFluid, BrakingDeceleration);  if (Acceleration.IsZero())  {    // Stop movement    Velocity = FVector::ZeroVector;  }  else  {    // Set velocity to max speed in the direction of acceleration (ignoring magnitude)    Velocity = GetMaxSpeed() * Acceleration.GetSafeNormal();  }}Voilà! we now have character movement where movement starts immediately at maximum speed and stops immediately when no acceleration input is present, exactly what we wanted for our game!If you’re unsure about how to go about subclassing CharacterMovementComponent, have a read of this."
+  }
+  
+]
+
