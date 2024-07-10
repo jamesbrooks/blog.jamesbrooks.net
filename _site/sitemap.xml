@@ -1,46 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/instant-velocity-character-movement/</loc>
-    <lastmod>2019-10-17T00:00:00+10:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/struct-to-json-serialization/</loc>
-    <lastmod>2020-01-07T00:00:00+10:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/fixing-movement-not-allowed-for-respawned-pawns/</loc>
-    <lastmod>2020-01-13T00:00:00+10:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/default-transformations-for-active-storage-attachments/</loc>
-    <lastmod>2020-06-11T00:00:00+09:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/</loc>
-    <lastmod>2021-04-11T00:00:00+09:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/websockets-and-dedicated-servers/</loc>
-    <lastmod>2021-10-18T00:00:00+10:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/enhanced-broadcasting-with-actioncable/</loc>
-    <lastmod>2023-08-25T00:00:00+09:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/steam-getauthticketforwebapi-in-unreal-engine/</loc>
-    <lastmod>2024-06-27T00:00:00+09:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/posts/access-project-version-in-code/</loc>
-    <lastmod>2024-06-28T00:00:00+09:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/about/</loc>
-    <lastmod>2024-01-01T00:00:00+10:30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.jamesbrooks.net/</loc>
-  </url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/instant-velocity-character-movement/</loc>
+<lastmod>2010-10-17T00:00:00+10:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/instant-velocity-character-movement/</loc>
+<lastmod>2023-09-07T11:39:38+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/struct-to-json-serialization/</loc>
+<lastmod>2023-09-07T11:39:38+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/fixing-movement-not-allowed-for-respawned-pawns/</loc>
+<lastmod>2023-09-07T11:39:38+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/default-transformations-for-active-storage-attachments/</loc>
+<lastmod>2023-09-07T11:39:38+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/</loc>
+<lastmod>2023-09-07T11:39:38+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/websockets-and-dedicated-servers/</loc>
+<lastmod>2023-09-07T11:39:38+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/enhanced-broadcasting-with-actioncable/</loc>
+<lastmod>2023-09-07T11:39:38+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/steam-getauthticketforwebapi-in-unreal-engine/</loc>
+<lastmod>2024-06-27T00:00:00+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/posts/access-project-version-in-code/</loc>
+<lastmod>2024-06-28T00:00:00+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/about/</loc>
+<lastmod>2024-07-10T11:17:20+09:30</lastmod>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/struct-to-json-serialization.html</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/unreal-engine/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/c/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/json/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/upathfollowingcomponent/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/rails/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/ruby/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/activestorage/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/graphql/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/websockets/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/blueprint/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/tags/steam/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/categories/unreal-engine/</loc>
+</url>
+<url>
+<loc>https://blog.jamesbrooks.net/categories/ruby-on-rails/</loc>
+</url>
 </urlset>
