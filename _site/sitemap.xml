@@ -2,10 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://blog.jamesbrooks.net/posts/instant-velocity-character-movement/</loc>
-<lastmod>2010-10-17T00:00:00+10:30</lastmod>
-</url>
-<url>
-<loc>https://blog.jamesbrooks.net/posts/instant-velocity-character-movement/</loc>
 <lastmod>2023-09-07T11:39:38+09:30</lastmod>
 </url>
 <url>
@@ -42,13 +38,10 @@
 </url>
 <url>
 <loc>https://blog.jamesbrooks.net/about/</loc>
-<lastmod>2024-07-10T11:17:20+09:30</lastmod>
+<lastmod>2024-07-11T15:59:40+09:30</lastmod>
 </url>
 <url>
 <loc>https://blog.jamesbrooks.net/</loc>
-</url>
-<url>
-<loc>https://blog.jamesbrooks.net/struct-to-json-serialization.html</loc>
 </url>
 <url>
 <loc>https://blog.jamesbrooks.net/tags/unreal-engine/</loc>

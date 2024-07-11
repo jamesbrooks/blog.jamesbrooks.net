@@ -23,7 +23,7 @@
   SimpleJekyllSearch({
     searchInput: document.getElementById('search-input'),
     resultsContainer: document.getElementById('search-results'),
-    json: '{{ '/assets/js/data/search.json' | relative_url }}?v={{ site.time | date:"%s" }}',
+    json: '{{ '/assets/js/data/search.json' | relative_url }}?v={{ site.asset_cache_bust_string }}',
     searchResultTemplate: '{{ result_elem | strip_newlines }}',
     noResultsText: '{{ not_found }}',
     templateMiddleware: function(prop, value, template) {

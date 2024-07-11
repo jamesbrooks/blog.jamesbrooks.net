@@ -185,3 +185,5 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+asset_cache_bust_string: 1720420839
