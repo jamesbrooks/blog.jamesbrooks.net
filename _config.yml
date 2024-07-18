@@ -176,6 +176,8 @@ exclude:
   - package*.json
   - docker-compose.yml
   - nginx.conf
+  - generate_post_thumbs.sh
+  - "**/thumb_orig.png"
 
 jekyll-archives:
   enabled: [categories, tags]
