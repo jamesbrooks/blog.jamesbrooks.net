@@ -22,6 +22,7 @@ keywords:
   - Record Loader
   - graphql-ruby
   - graphql-batch
+og_image: https://blog.jamesbrooks.net/assets/img/posts/2021-04-11-graphql-batch-count-loader/thumb.png
 ---
 
 When implemented a GraphQL API using [GraphQL Ruby](https://graphql-ruby.org/) it is beneficial to ensure that executed queries don't trigger any N+1 query problems.

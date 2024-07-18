@@ -14,6 +14,7 @@ keywords:
   - Steamworks
   - Web API
   - Authentication
+og_image: https://blog.jamesbrooks.net/assets/img/posts/2024-06-27-steam-getauthticketforwebapi-in-unreal-engine/thumb.png
 ---
 
 When working with Steam in Unreal Engine you may want to authenticate a player to a backend server. The [Steamworks documentation on authentication](https://partner.steamgames.com/doc/features/auth) recommends using the Web API for this purpose, where a client generates an auth ticket ([ISteamUser::GetAuthTicketForWebApi](https://partner.steamgames.com/doc/api/ISteamUser#GetAuthTicketForWebApi)) which is then sent to the backend server for validation ([ISteamUserAuth/AuthenticateUserTicket](https://partner.steamgames.com/doc/webapi/ISteamUserAuth#AuthenticateUserTicket)).

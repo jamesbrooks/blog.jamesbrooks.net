@@ -14,6 +14,7 @@ keywords:
   - Variants
   - Image Cropping
   - Default Transformations
+og_image: https://blog.jamesbrooks.net/assets/img/posts/2020-06-11-default-transformations-for-active-storage-attachments/thumb.png
 ---
 
 Recently I needed to crop images across a variety of models and attachments on a recent Rails project using [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html).

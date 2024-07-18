@@ -11,6 +11,7 @@ keywords:
   - Unreal Engine
   - JSON
   - Serialize Struct
+og_image: https://blog.jamesbrooks.net/assets/img/posts/2020-01-07-struct-to-json-serialization/thumb.png
 ---
 
 Serializing a Unreal Engine USTRUCT to JSON or deserializing JSON back to a USTRUCT is very painless thanks to the build-in [FJsonObjectConverter](https://docs.unrealengine.com/en-US/API/Runtime/JsonUtilities/FJsonObjectConverter/index.html) class. The process is performed recursively without any extra effort as well as having the ability to include/exclude specific properties from the serialization. Below we'll describe the requirements for using `FJsonObjectConverter` as well as a practical example.
