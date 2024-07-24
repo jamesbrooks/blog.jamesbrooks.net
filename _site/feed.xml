@@ -4,7 +4,7 @@
   <id>https://blog.jamesbrooks.net/</id>
   <title>James Brooks</title>
   <subtitle>Programming devblog covering whatever I'm currently working on, from Ruby on Rails through to Unreal Engine.</subtitle>
-  <updated>2024-07-12T10:06:14+09:30</updated>
+  <updated>2024-07-24T17:19:41+09:30</updated>
   <author>
     <name>James Brooks</name>
     <uri>https://blog.jamesbrooks.net/</uri>
@@ -20,11 +20,35 @@
 
   
   <entry>
+    <title>PIE instance ID in Unreal Engine</title>
+    <link href="https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/" rel="alternate" type="text/html" title="PIE instance ID in Unreal Engine" />
+    <published>2024-07-24T00:00:00+09:30</published>
+  
+    <updated>2024-07-24T00:00:00+09:30</updated>
+  
+    <id>https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/</id>
+    <content src="https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/" />
+    <author>
+      <name>James Brooks</name>
+    </author>
+
+  
+    
+    <category term="Unreal Engine" />
+    
+  
+
+  <summary>How to access the PIE instance ID in Unreal Engine and expose it to Blueprints</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>Access project version in Unreal Engine</title>
     <link href="https://blog.jamesbrooks.net/posts/access-project-version-in-code/" rel="alternate" type="text/html" title="Access project version in Unreal Engine" />
     <published>2024-06-28T00:00:00+09:30</published>
   
-    <updated>2024-06-28T00:00:00+09:30</updated>
+    <updated>2024-07-18T16:06:24+09:30</updated>
   
     <id>https://blog.jamesbrooks.net/posts/access-project-version-in-code/</id>
     <content src="https://blog.jamesbrooks.net/posts/access-project-version-in-code/" />
@@ -48,7 +72,7 @@
     <link href="https://blog.jamesbrooks.net/posts/steam-getauthticketforwebapi-in-unreal-engine/" rel="alternate" type="text/html" title="Steam GetAuthTicketForWebApi in Unreal Engine" />
     <published>2024-06-27T00:00:00+09:30</published>
   
-    <updated>2024-06-27T00:00:00+09:30</updated>
+    <updated>2024-07-18T16:34:19+09:30</updated>
   
     <id>https://blog.jamesbrooks.net/posts/steam-getauthticketforwebapi-in-unreal-engine/</id>
     <content src="https://blog.jamesbrooks.net/posts/steam-getauthticketforwebapi-in-unreal-engine/" />
@@ -72,7 +96,7 @@
     <link href="https://blog.jamesbrooks.net/posts/enhanced-broadcasting-with-actioncable/" rel="alternate" type="text/html" title="Enhanced broadcasting with Action Cable" />
     <published>2023-08-25T00:00:00+09:30</published>
   
-    <updated>2023-09-07T11:39:38+09:30</updated>
+    <updated>2024-07-18T16:34:19+09:30</updated>
   
     <id>https://blog.jamesbrooks.net/posts/enhanced-broadcasting-with-actioncable/</id>
     <content src="https://blog.jamesbrooks.net/posts/enhanced-broadcasting-with-actioncable/" />
@@ -96,7 +120,7 @@
     <link href="https://blog.jamesbrooks.net/posts/websockets-and-dedicated-servers/" rel="alternate" type="text/html" title="Websockets and dedicated servers" />
     <published>2021-10-18T00:00:00+10:30</published>
   
-    <updated>2023-09-07T11:39:38+09:30</updated>
+    <updated>2024-07-18T16:34:19+09:30</updated>
   
     <id>https://blog.jamesbrooks.net/posts/websockets-and-dedicated-servers/</id>
     <content src="https://blog.jamesbrooks.net/posts/websockets-and-dedicated-servers/" />
@@ -111,30 +135,6 @@
   
 
   <summary>Use Websockets in Unreal Engine dedicated server builds</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>Count loader for graphql-batch</title>
-    <link href="https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/" rel="alternate" type="text/html" title="Count loader for graphql-batch" />
-    <published>2021-04-11T00:00:00+09:30</published>
-  
-    <updated>2023-09-07T11:39:38+09:30</updated>
-  
-    <id>https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/</id>
-    <content src="https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/" />
-    <author>
-      <name>James Brooks</name>
-    </author>
-
-  
-    
-    <category term="Ruby on Rails" />
-    
-  
-
-  <summary>Efficiently counting records and load associations using GraphQL Ruby</summary>
 
   </entry>
 

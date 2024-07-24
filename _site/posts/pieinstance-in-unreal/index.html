@@ -30,22 +30,23 @@
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Unreal Engine" />
+<meta property="og:title" content="PIE instance ID in Unreal Engine" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Programming devblog covering whatever I’m currently working on, from Ruby on Rails through to Unreal Engine." />
-<meta property="og:description" content="Programming devblog covering whatever I’m currently working on, from Ruby on Rails through to Unreal Engine." />
-<link rel="canonical" href="https://blog.jamesbrooks.net/tags/unreal-engine/" />
-<meta property="og:url" content="https://blog.jamesbrooks.net/tags/unreal-engine/" />
+<meta name="description" content="How to access the PIE instance ID in Unreal Engine and expose it to Blueprints" />
+<meta property="og:description" content="How to access the PIE instance ID in Unreal Engine and expose it to Blueprints" />
+<link rel="canonical" href="https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/" />
+<meta property="og:url" content="https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/" />
 <meta property="og:site_name" content="James Brooks" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Unreal Engine" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-24T00:00:00+09:30" />
+<meta property="og:image" content="https://blog.jamesbrooks.net/assets/img/posts/2024-07-24-pieinstance-in-unreal/thumb.png" />
+<meta property="twitter:title" content="PIE instance ID in Unreal Engine" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Programming devblog covering whatever I’m currently working on, from Ruby on Rails through to Unreal Engine.","headline":"Unreal Engine","url":"https://blog.jamesbrooks.net/tags/unreal-engine/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-07-24T00:00:00+09:30","datePublished":"2024-07-24T00:00:00+09:30","description":"How to access the PIE instance ID in Unreal Engine and expose it to Blueprints","headline":"PIE instance ID in Unreal Engine","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/"},"url":"https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>Unreal Engine | James Brooks
+  <title>PIE instance ID in Unreal Engine | James Brooks
   </title>
 
   <!--
@@ -109,7 +110,12 @@
   
 
   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+  
 
+  
+    <!-- Image Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
   
 
   <!-- JavaScript -->
@@ -418,14 +424,10 @@
           
         
           
-            <span>
-              <a href="/tags/">Tags</a>
-            </span>
-          
         
           
             
-              <span>Unreal Engine</span>
+              <span>PIE instance ID in Unreal Engine</span>
             
 
           
@@ -439,7 +441,7 @@
     </button>
 
     <div id="topbar-title">
-      Tag
+      Post
     </div>
 
     <button type="button" id="search-trigger" class="btn btn-link">
@@ -465,27 +467,157 @@
         <div class="row flex-grow-1">
           <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
             
-              
+              <!-- Refactor the HTML structure -->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+
+<!-- Handle images -->
+
+
+
+
+  
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+
+  
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
 
 
 
 <article class="px-1">
-  
+  <header>
+    <h1 data-toc-skip>PIE instance ID in Unreal Engine</h1>
+    
+      <p class="post-desc fw-light mb-4">How to access the PIE instance ID in Unreal Engine and expose it to Blueprints</p>
     
 
-
-
-<div id="page-tag">
-  <h1 class="ps-lg-2">
-    <i class="fa fa-tag fa-fw text-muted"></i>
-    Unreal Engine
-    <span class="lead text-muted ps-2">7</span>
-  </h1>
-  <ul class="content ps-0">
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/pieinstance-in-unreal/">PIE instance ID in Unreal Engine</a>
-        <span class="dash flex-grow-1"></span>
+    <div class="post-meta text-muted">
+      <!-- published date -->
+      <span>
+        Posted
         <!--
   Date format snippet
   See: ${JS_ROOT}/utils/locale-dateime.js
@@ -496,166 +628,243 @@
 
 <time
   
-    class="text-muted small text-nowrap"
-  
   data-ts="1721745000"
   data-df="ll"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
   Jul 24, 2024
 </time>
 
-      </li>
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/access-project-version-in-code/">Access project version in Unreal Engine</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
+      </span>
+
+      <!-- lastmod date -->
+      
+
+      
+
+      <div class="d-flex justify-content-between">
+        <!-- author(s) -->
+        <span>
+          
+
+          By
+
+          <em>
+            
+              <a href="https://github.com/jamesbrooks">James Brooks</a>
+            
+          </em>
+        </span>
+
+        <div>
+          <!-- pageviews -->
+          
+
+          <!-- read time -->
+          <!-- Calculate the post's reading time, and display the word count in tooltip -->
+
+
+
+<!-- words per minute -->
 
 
 
 
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1719498600"
-  data-df="ll"
-  
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="229 words"
 >
-  Jun 28, 2024
-</time>
+  <em>1 min</em> read</span>
 
-      </li>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <p>When Playing in Editor (PIE), in particular with multiple local clients, it can be useful to know which instance of the game you are currently running. This can be useful for debugging, logging, or other purposes (for example I have used this id to communicate to a backend server to authenticate the local clients and have consistent player data served to them).</p>
+
+<p>I expose the PIE instance ID to Blueprints in my game using a blueprint function library. This can be included in an existing blueprint function library that you might have for your project, otherwise a new one can be created.</p>
+
+<div file="MyFunctionLibrary.h" class="language-cpp highlighter-rouge"><div class="code-header">
+        <span data-label-text="MyFunctionLibrary.h"><i class="far fa-file-code fa-fw"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">MYGAME_API</span> <span class="n">UMyFunctionLibrary</span> <span class="o">:</span> <span class="k">public</span> <span class="n">UBlueprintFunctionLibrary</span>
+<span class="p">{</span>
+  <span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintPure</span><span class="p">,</span> <span class="n">Category</span> <span class="o">=</span> <span class="s">"Debug"</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="p">(</span><span class="n">WorldContext</span> <span class="o">=</span> <span class="s">"WorldContextObject"</span><span class="p">))</span>
+  <span class="k">static</span> <span class="n">int32</span> <span class="n">PIEInstance</span><span class="p">(</span><span class="k">const</span> <span class="n">UObject</span><span class="o">*</span> <span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<div file="MyFunctionLibrary.cpp" class="language-cpp highlighter-rouge"><div class="code-header">
+        <span data-label-text="MyFunctionLibrary.cpp"><i class="far fa-file-code fa-fw"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="n">int32</span> <span class="n">UMyFunctionLibrary</span><span class="o">::</span><span class="n">PIEInstance</span><span class="p">(</span><span class="k">const</span> <span class="n">UObject</span><span class="o">*</span> <span class="n">WorldContextObject</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">UWorld</span><span class="o">*</span> <span class="n">World</span> <span class="o">=</span> <span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">GetWorldFromContextObject</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">,</span> <span class="n">EGetWorldErrorMode</span><span class="o">::</span><span class="n">LogAndReturnNull</span><span class="p">);</span>
+
+  <span class="c1">// If we are in the editor, return the PIE instance ID, otherwise return -1 (not in PIE and we won't be using this value anyway)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">World</span><span class="o">-&gt;</span><span class="n">IsEditorWorld</span><span class="p">())</span>
+  <span class="p">{</span>
+    <span class="c1">// Get world context</span>
+    <span class="n">FWorldContext</span><span class="o">*</span> <span class="n">WorldContext</span> <span class="o">=</span> <span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">GetWorldContextFromWorld</span><span class="p">(</span><span class="n">World</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">WorldContext</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="n">WorldContext</span><span class="o">-&gt;</span><span class="n">PIEInstance</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Now the following blueprint function can be called from any blueprint in your project to get the PIE instance ID of the current client:</p>
+
+<p><a href="/assets/img/posts/2024-07-24-pieinstance-in-unreal/pieinstance.webp" class="popup img-link  shimmer"><img src="/assets/img/posts/2024-07-24-pieinstance-in-unreal/pieinstance.webp" alt="Get Project Version" loading="lazy"></a></p>
+
+  </div>
+
+  <div class="post-tail-wrapper text-muted">
+    <!-- categories -->
     
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/steam-getauthticketforwebapi-in-unreal-engine/">Steam GetAuthTicketForWebApi in Unreal Engine</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1719412200"
-  data-df="ll"
-  
->
-  Jun 27, 2024
-</time>
-
-      </li>
+      <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i>
+        
+          <a href="/categories/unreal-engine/">Unreal Engine</a>
+      </div>
     
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/websockets-and-dedicated-servers/">Websockets and dedicated servers</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
 
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1634477400"
-  data-df="ll"
-  
->
-  Oct 18, 2021
-</time>
-
-      </li>
+    <!-- tags -->
     
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/fixing-movement-not-allowed-for-respawned-pawns/">Fixing 'movement not allowed' for respawned pawns</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1578835800"
-  data-df="ll"
-  
->
-  Jan 13, 2020
-</time>
-
-      </li>
+      <div class="post-tags">
+        <i class="fa fa-tags fa-fw me-1"></i>
+        
+          <a
+            href="/tags/unreal-engine/"
+            class="post-tag no-text-decoration"
+          >Unreal Engine</a>
+        
+          <a
+            href="/tags/c/"
+            class="post-tag no-text-decoration"
+          >C++</a>
+        
+          <a
+            href="/tags/blueprint/"
+            class="post-tag no-text-decoration"
+          >Blueprint</a>
+        
+          <a
+            href="/tags/pieinstance/"
+            class="post-tag no-text-decoration"
+          >PIEInstance</a>
+        
+      </div>
     
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/struct-to-json-serialization/">Struct to JSON serialization</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
 
+    <div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+      <div class="license-wrapper">
+        
+          
 
+          This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+        
+      </div>
 
+      <!-- Post sharing snippet -->
 
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1578317400"
-  data-df="ll"
-  
->
-  Jan  7, 2020
-</time>
-
-      </li>
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Share</span>
+  <span class="share-icons">
     
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/instant-velocity-character-movement/">Instant velocity character movement</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1571232600"
-  data-df="ll"
-  
->
-  Oct 17, 2019
-</time>
-
-      </li>
     
-  </ul>
+    
+
+    
+
+      
+
+      <a href="https://twitter.com/intent/tweet?text=PIE%20instance%20ID%20in%20Unreal%20Engine%20-%20James%20Brooks&url=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Fpieinstance-in-unreal%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fab fa-twitter"></i>
+      </a>
+    
+
+      
+
+      <a href="https://www.facebook.com/sharer/sharer.php?title=PIE%20instance%20ID%20in%20Unreal%20Engine%20-%20James%20Brooks&u=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Fpieinstance-in-unreal%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+
+      
+
+      <a href="https://t.me/share/url?url=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Fpieinstance-in-unreal%2F&text=PIE%20instance%20ID%20in%20Unreal%20Engine%20-%20James%20Brooks" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
 </div>
 
-  
+    </div>
+    <!-- .post-tail-bottom -->
+  </div>
+  <!-- div.post-tail-wrapper -->
 </article>
+
 
             
           </main>
@@ -1124,12 +1333,254 @@
             </div>
 
             
+              
+              
+
+
+
+
+            
           </aside>
         </div>
 
         <div class="row">
           <!-- tail -->
           <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              
+              <!-- Recommend the other 3 posts according to the tags and categories of the current post. -->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+  <aside id="related-posts" aria-labelledby="related-label">
+    <h3 class="mb-4" id="related-label">Further Reading</h3>
+    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+      
+        <article class="col">
+          <a href="/posts/access-project-version-in-code/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1719498600"
+  data-df="ll"
+  
+>
+  Jun 28, 2024
+</time>
+
+              <h4 class="pt-0 my-2">Access project version in Unreal Engine</h4>
+              <div class="text-muted">
+                <p>How to access the project&#39;s version in Unreal Engine and expose it to Blueprints</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/steam-getauthticketforwebapi-in-unreal-engine/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1719412200"
+  data-df="ll"
+  
+>
+  Jun 27, 2024
+</time>
+
+              <h4 class="pt-0 my-2">Steam GetAuthTicketForWebApi in Unreal Engine</h4>
+              <div class="text-muted">
+                <p>How to call Steam&#39;s GetAuthTicketForWebApi in Unreal Engine and expose it to Blueprints</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/websockets-and-dedicated-servers/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1634477400"
+  data-df="ll"
+  
+>
+  Oct 18, 2021
+</time>
+
+              <h4 class="pt-0 my-2">Websockets and dedicated servers</h4>
+              <div class="text-muted">
+                <p>Use Websockets in Unreal Engine dedicated server builds</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+    </nav>
+  </aside>
+  <!-- #related-posts -->
+
+
+            
+              
+              <!-- Navigation buttons at the bottom of the post. -->
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  
+  
+
+  
+    <a
+      href="/posts/access-project-version-in-code/"
+      class="btn btn-outline-primary"
+      aria-label="Older"
+    >
+      <p>Access project version in Unreal Engine</p>
+    </a>
+  
+
+  
+    <div class="btn btn-outline-primary disabled" aria-label="Newer">
+      <p>-</p>
+    </div>
+  
+</nav>
+
+            
+              
+              <!-- The comments switcher -->
+
+
             
 
             <!-- The Footer -->
@@ -1603,6 +2054,13 @@
 <!-- layout specified -->
 
 
+  
+
+  
+    <!-- image lazy-loading & popup & clipboard -->
+    
+  
+
 
 
 
@@ -1652,9 +2110,30 @@
 
   
 
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
 
 
-  <script src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/dayjs@1.11.11/dayjs.min.js,npm/dayjs@1.11.11/locale/en.min.js,npm/dayjs@1.11.11/plugin/relativeTime.min.js,npm/dayjs@1.11.11/plugin/localizedFormat.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.11/dayjs.min.js,npm/dayjs@1.11.11/locale/en.min.js,npm/dayjs@1.11.11/plugin/relativeTime.min.js,npm/dayjs@1.11.11/plugin/localizedFormat.min.js"></script>
 
 
 
@@ -1662,11 +2141,15 @@
 
 
 
-<script src="/assets/js/dist/misc.min.js?v=1720420839"></script>
+<script src="/assets/js/dist/post.min.js?v=1720420839"></script>
 
 
 
 <!-- Pageviews -->
+
+  
+
+  
 
 
 
