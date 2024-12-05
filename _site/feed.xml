@@ -4,7 +4,7 @@
   <id>https://blog.jamesbrooks.net/</id>
   <title>James Brooks</title>
   <subtitle>Programming devblog covering whatever I'm currently working on, from Ruby on Rails through to Unreal Engine.</subtitle>
-  <updated>2024-07-24T17:19:41+09:30</updated>
+  <updated>2024-12-05T23:09:41+10:30</updated>
   <author>
     <name>James Brooks</name>
     <uri>https://blog.jamesbrooks.net/</uri>
@@ -17,6 +17,30 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Technitium DNS Server with Tailscale</title>
+    <link href="https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/" rel="alternate" type="text/html" title="Technitium DNS Server with Tailscale" />
+    <published>2024-12-05T00:00:00+10:30</published>
+  
+    <updated>2024-12-05T00:00:00+10:30</updated>
+  
+    <id>https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/</id>
+    <content src="https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/" />
+    <author>
+      <name>James Brooks</name>
+    </author>
+
+  
+    
+    <category term="Networking" />
+    
+  
+
+  <summary>How to use Technitium DNS Server with Tailscale to provide split-horizon DNS resolution for your network in order to provide correct DNS resolution for devices on your home network as well as devices connecting in via Tailscale.</summary>
+
+  </entry>
 
   
   <entry>
@@ -111,30 +135,6 @@
   
 
   <summary>Render and broadcast payloads over ActionCable only to channels with active subscriptions</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>Websockets and dedicated servers</title>
-    <link href="https://blog.jamesbrooks.net/posts/websockets-and-dedicated-servers/" rel="alternate" type="text/html" title="Websockets and dedicated servers" />
-    <published>2021-10-18T00:00:00+10:30</published>
-  
-    <updated>2024-07-18T16:34:19+09:30</updated>
-  
-    <id>https://blog.jamesbrooks.net/posts/websockets-and-dedicated-servers/</id>
-    <content src="https://blog.jamesbrooks.net/posts/websockets-and-dedicated-servers/" />
-    <author>
-      <name>James Brooks</name>
-    </author>
-
-  
-    
-    <category term="Unreal Engine" />
-    
-  
-
-  <summary>Use Websockets in Unreal Engine dedicated server builds</summary>
 
   </entry>
 

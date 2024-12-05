@@ -30,23 +30,23 @@
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Count loader for graphql-batch" />
+<meta property="og:title" content="Technitium DNS Server with Tailscale" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Efficiently counting records and load associations using GraphQL Ruby" />
-<meta property="og:description" content="Efficiently counting records and load associations using GraphQL Ruby" />
-<link rel="canonical" href="https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/" />
-<meta property="og:url" content="https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/" />
+<meta name="description" content="How to use Technitium DNS Server with Tailscale to provide split-horizon DNS resolution for your network in order to provide correct DNS resolution for devices on your home network as well as devices connecting in via Tailscale." />
+<meta property="og:description" content="How to use Technitium DNS Server with Tailscale to provide split-horizon DNS resolution for your network in order to provide correct DNS resolution for devices on your home network as well as devices connecting in via Tailscale." />
+<link rel="canonical" href="https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/" />
+<meta property="og:url" content="https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/" />
 <meta property="og:site_name" content="James Brooks" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-04-11T00:00:00+09:30" />
-<meta property="og:image" content="https://blog.jamesbrooks.net/assets/img/posts/2021-04-11-graphql-batch-count-loader/thumb.png" />
-<meta property="twitter:title" content="Count loader for graphql-batch" />
+<meta property="article:published_time" content="2024-12-05T00:00:00+10:30" />
+<meta property="og:image" content="https://blog.jamesbrooks.net/assets/img/posts/2024-12-05-technitium-dns-server-with-tailscale/thumb.png" />
+<meta property="twitter:title" content="Technitium DNS Server with Tailscale" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-07-18T16:34:19+09:30","datePublished":"2021-04-11T00:00:00+09:30","description":"Efficiently counting records and load associations using GraphQL Ruby","headline":"Count loader for graphql-batch","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/"},"url":"https://blog.jamesbrooks.net/posts/graphql-batch-count-loader/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-12-05T00:00:00+10:30","datePublished":"2024-12-05T00:00:00+10:30","description":"How to use Technitium DNS Server with Tailscale to provide split-horizon DNS resolution for your network in order to provide correct DNS resolution for devices on your home network as well as devices connecting in via Tailscale.","headline":"Technitium DNS Server with Tailscale","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/"},"url":"https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>Count loader for graphql-batch | James Brooks
+  <title>Technitium DNS Server with Tailscale | James Brooks
   </title>
 
   <!--
@@ -427,7 +427,7 @@
         
           
             
-              <span>Count loader for graphql-batch</span>
+              <span>Technitium DNS Server with Tailscale</span>
             
 
           
@@ -533,6 +533,17 @@
 
       
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
 
     
   
@@ -557,9 +568,9 @@
 
 <article class="px-1">
   <header>
-    <h1 data-toc-skip>Count loader for graphql-batch</h1>
+    <h1 data-toc-skip>Technitium DNS Server with Tailscale</h1>
     
-      <p class="post-desc fw-light mb-4">Efficiently counting records and load associations using GraphQL Ruby</p>
+      <p class="post-desc fw-light mb-4">How to use Technitium DNS Server with Tailscale to provide split-horizon DNS resolution for your network in order to provide correct DNS resolution for devices on your home network as well as devices connecting in via Tailscale.</p>
     
 
     <div class="post-meta text-muted">
@@ -576,41 +587,18 @@
 
 <time
   
-  data-ts="1618065000"
+  data-ts="1733319000"
   data-df="ll"
   
     data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
-  Apr 11, 2021
+  Dec  5, 2024
 </time>
 
       </span>
 
       <!-- lastmod date -->
-      
-        <span>
-          Updated
-          <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-  data-ts="1721286259"
-  data-df="ll"
-  
-    data-bs-toggle="tooltip" data-bs-placement="bottom"
-  
->
-  Jul 18, 2024
-</time>
-
-        </span>
       
 
       
@@ -654,9 +642,9 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="419 words"
+  title="816 words"
 >
-  <em>2 min</em> read</span>
+  <em>4 min</em> read</span>
 
         </div>
       </div>
@@ -664,40 +652,24 @@
   </header>
 
   <div class="content">
-    <p>When implemented a GraphQL API using <a href="https://graphql-ruby.org/">GraphQL Ruby</a> it is beneficial to ensure that executed queries don’t trigger any N+1 query problems.</p>
+    <p>I have been using <a href="https://tailscale.com/">Tailscale</a> for a while now to provide secure access to my home network from anywhere, I run it constantly on my work laptop which I use both at home and in the office as well as on many devices within my home network. Within my home network as well I have been running Pi-hole to provide network-wide ad-blocking, and for the interest of this article, DNS resolution.</p>
 
-<p>One (of many) solutions to this is <a href="https://github.com/Shopify/graphql-batch">graphql-batch</a> which provides a means of delcaring loaders to perform batched execution, avoding N+1 query problems.</p>
+<p>One of the things I haven’t quite been able to (happily) solve has been the ability to provide DNS resolution that is both correct for devices on my home network as well as devices connecting in via Tailscale. Pi-hole allowed me to add some simple DNS entries to resolve internal hosts, but for devices connecting in via Tailscale those entries would not be appropriate (e.g. the difference between 10.1.1.20 and the Tailscale IP that device might have of 100.70.60.50).</p>
 
-<p>A record and assocation loader is provided by default and these perform their jobs admirably, though alone they do not cover the gamut of N+1 issues that can be encountered.</p>
+<p>I recently discovered <a href="https://technitium.com/dns/">Technitium DNS Server</a> as a bit of a step-up replacement for Pi-hole in terms of ad-blocking, but additionally with a much more powerful DNS server. One of the features that caught my eye was the ability to provide split-horizon DNS resolution, which is exactly what I needed to solve my problem.</p>
 
-<p>In this post we’ll address the issue of counting generically using <code class="language-plaintext highlighter-rouge">CountLoader</code>, and more explicitly associations using <a href="#counting-activerecord-associations"><code class="language-plaintext highlighter-rouge">AssociationCountLoader</code></a>.</p>
+<p>Split-horizon DNS resolution enables me to provide different DNS resolutions based on the source IP of the request. This means that I can provide different DNS resolutions for devices on my home network and devices connecting in via Tailscale. Perfect!</p>
 
-<p>The following example type if fetched multiple times in a query (e.g. as a collection) would cause multiple queries in counting:</p>
+<p>I won’t go into the details of setting up Technitium DNS Server (but after the server is installed the Split Horizon app will also need to be installed), but I will provide a brief overview of the split-horizon configuration that I used to solve my problem.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="code-header">
-        <span data-label-text="Ruby"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Types::UserType</span> <span class="o">&lt;</span> <span class="no">Types</span><span class="o">::</span><span class="no">BaseObject</span>
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="no">String</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
-  <span class="n">field</span> <span class="ss">:post_count</span><span class="p">,</span> <span class="no">Integer</span><span class="p">,</span> <span class="s2">"blog posts authored by this user"</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+<p>There are two primary methods that can be used to solve this problem, first is on a per-record basis, and second is a global ip mapping mechanism. I’ll detail both below. For my use case I’ve gone with the first method as I don’t have a large amount of receords that need this treatment, and having the details of the mapping directly on the record itself feels like less of a foot-gun.</p>
 
-  <span class="k">def</span> <span class="nf">post_count</span>
-    <span class="n">object</span><span class="p">.</span><span class="nf">posts</span><span class="p">.</span><span class="nf">count</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</pre></td></tr></tbody></table></code></div></div>
+<h3 id="per-record-basis"><span class="me-2">Per-record basis</span><a href="#per-record-basis" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>We can resolve this issue by implementing a <code class="language-plaintext highlighter-rouge">CountLoader</code> and updating the typing accordingly.</p>
+<p>Instead of creating a regular DNS record, e.g. an A record, instead create an APP record. Specify ‘Split Horizon’ as the app, ‘SplitHorizon.SimpleAddress’ as the class path (though the CNAME-equivalent class path could also be used if that is more appropriate). The ‘Data’ field is where the split-horizon magic happens, this is a JSON object that specifies the IP address to return based on the source IP of the request.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="code-header">
-        <span data-label-text="Ruby"><i class="fas fa-code fa-fw small"></i></span>
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -709,27 +681,41 @@
 9
 10
 11
-12
-13
-14
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">CountLoader</span> <span class="o">&lt;</span> <span class="no">GraphQL</span><span class="o">::</span><span class="no">Batch</span><span class="o">::</span><span class="no">Loader</span>
-  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
-    <span class="k">super</span><span class="p">()</span>
-    <span class="vi">@model</span> <span class="o">=</span> <span class="n">model</span>
-    <span class="vi">@field</span> <span class="o">=</span> <span class="n">field</span>
-  <span class="k">end</span>
+</pre></td><td class="rouge-code"><pre><span class="p">{</span>
+  <span class="c1">// for requests from a source in the Tailscale CIDR, resolve to the Tailscale IP</span>
+  <span class="dl">"</span><span class="s2">100.64.0.0/10</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">100.89.243.99</span><span class="dl">"</span>
+  <span class="p">],</span>
 
-  <span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
-    <span class="n">counts</span> <span class="o">=</span> <span class="vi">@model</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="vi">@field</span> <span class="o">=&gt;</span> <span class="n">ids</span><span class="p">).</span><span class="nf">group</span><span class="p">(</span><span class="vi">@field</span><span class="p">).</span><span class="nf">count</span>
-
-    <span class="n">counts</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="nb">id</span><span class="p">,</span> <span class="n">count</span><span class="o">|</span> <span class="n">fulfill</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="p">}</span>
-    <span class="n">ids</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="nb">id</span><span class="o">|</span> <span class="n">fulfill</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">unless</span> <span class="n">fulfilled?</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="p">}</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+  <span class="c1">// otherwise resolve to the internal IP for requests from any other source</span>
+  <span class="dl">"</span><span class="s2">0.0.0.0/0</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">10.1.1.3</span><span class="dl">"</span>
+  <span class="p">]</span>
+<span class="p">}</span>
 </pre></td></tr></tbody></table></code></div></div>
 
-<div class="language-ruby highlighter-rouge"><div class="code-header">
-        <span data-label-text="Ruby"><i class="fas fa-code fa-fw small"></i></span>
+<p>And voila! Now devices on my home network will resolve to the internal IP of the host, and devices connecting in via Tailscale will resolve to the Tailscale IP of the host. Perfect! Optionally this approach can be cleaned up by setting some global configuration on the Split Horizon app to add friendly network names for the CIDRs, e.g.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">networks</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">tailscale</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">100.64.0.0/10</span><span class="dl">"</span><span class="p">],</span>
+    <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">0.0.0.0/0</span><span class="dl">"</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>Which would allow the per-record configuration to be simplified to:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -738,26 +724,24 @@
 6
 7
 8
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Types::UserType</span> <span class="o">&lt;</span> <span class="no">Types</span><span class="o">::</span><span class="no">BaseObject</span>
-  <span class="n">field</span> <span class="ss">:name</span><span class="p">,</span> <span class="no">String</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
-  <span class="n">field</span> <span class="ss">:post_count</span><span class="p">,</span> <span class="no">Integer</span><span class="p">,</span> <span class="s2">"blog posts authored by this user"</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
-
-  <span class="k">def</span> <span class="nf">post_count</span>
-    <span class="no">CountLoader</span><span class="p">.</span><span class="nf">for</span><span class="p">(</span><span class="no">Post</span><span class="p">,</span> <span class="ss">:user_id</span><span class="p">).</span><span class="nf">load</span><span class="p">(</span><span class="n">object</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+</pre></td><td class="rouge-code"><pre><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">tailscale</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">100.89.243.99</span><span class="dl">"</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">10.1.1.3</span><span class="dl">"</span>
+  <span class="p">]</span>
+<span class="p">}</span>
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>Using the <code class="language-plaintext highlighter-rouge">CountLoader</code> above the multiple queries as a result of counting have been resolved. As can be seen the structure of <code class="language-plaintext highlighter-rouge">CountLoader</code> is very similar to the provided <code class="language-plaintext highlighter-rouge">RecordLoader</code>.</p>
+<h3 id="global-ip-mapping"><span class="me-2">Global IP mapping</span><a href="#global-ip-mapping" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<h3 id="counting-activerecord-associations"><span class="me-2">Counting ActiveRecord associations</span><a href="#counting-activerecord-associations" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>The second method is to use a global IP mapping mechanism. Instead of setting up mappings on a per-record basis just declare the records like usual using the internal IP addresses, and then we’ll set up a mechanism to map internal IPs to their respective Tailscale IPs if the request is coming from a Tailscale IP. This configuration only needs to occur on the Split Horizon app.</p>
 
-<p>Reddit user <a href="https://www.reddit.com/user/Owumaro">u/Owumaro</a> suggested using an ActiveRecord association name rather than having to specify the join model and foriegn key back.</p>
+<p>The equivalent configuration to the above would be:</p>
 
-<p>The provided <code class="language-plaintext highlighter-rouge">AssociationCountLoader</code> reflects on the provided relationship to alleviate the need for specifying these extra implementation details (it should be less britle).</p>
-
-<div class="language-ruby highlighter-rouge"><div class="code-header">
-        <span data-label-text="Ruby"><i class="fas fa-code fa-fw small"></i></span>
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -777,46 +761,30 @@
 17
 18
 19
-20
-21
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">AssociationCountLoader</span> <span class="o">&lt;</span> <span class="no">GraphQL</span><span class="o">::</span><span class="no">Batch</span><span class="o">::</span><span class="no">Loader</span>
-  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">association_name</span><span class="p">)</span>
-    <span class="k">super</span><span class="p">()</span>
-    <span class="vi">@model</span> <span class="o">=</span> <span class="n">model</span>
-    <span class="vi">@association_name</span> <span class="o">=</span> <span class="n">association_name</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
-    <span class="n">reflection</span> <span class="o">=</span> <span class="vi">@model</span><span class="p">.</span><span class="nf">reflect_on_association</span><span class="p">(</span><span class="vi">@association_name</span><span class="p">)</span>
-    <span class="n">reflection</span><span class="p">.</span><span class="nf">check_preloadable!</span>
-
-    <span class="n">klass</span> <span class="o">=</span> <span class="n">reflection</span><span class="p">.</span><span class="nf">klass</span>
-    <span class="n">field</span> <span class="o">=</span> <span class="n">reflection</span><span class="p">.</span><span class="nf">join_primary_key</span>
-    <span class="n">counts</span> <span class="o">=</span> <span class="n">klass</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="n">field</span> <span class="o">=&gt;</span> <span class="n">records</span><span class="p">).</span><span class="nf">group</span><span class="p">(</span><span class="n">field</span><span class="p">).</span><span class="nf">count</span>
-
-    <span class="n">records</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">record</span><span class="o">|</span>
-      <span class="n">record_key</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="n">reflection</span><span class="p">.</span><span class="nf">active_record_primary_key</span><span class="p">]</span>
-      <span class="n">fulfill</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">counts</span><span class="p">[</span><span class="n">record_key</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+</pre></td><td class="rouge-code"><pre><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">enableAddressTranslation</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">networkGroupMap</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">100.64.0.0/10</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">tailscale</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">groups</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="c1">// for requests that come in from a Tailscake IP:</span>
+      <span class="c1">// translate the would-be resolved internal IP to a Tailscale IP instead</span>
+      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">tailscale</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">enabled</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">translateReverseLookups</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">externalToInternalTranslation</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">10.1.1.3</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">100.89.243.99</span><span class="dl">"</span>
+        <span class="c1">// add more mappings here as needed</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>Using <code class="language-plaintext highlighter-rouge">AssociationCountLoader</code> <code class="language-plaintext highlighter-rouge">post_count</code> in <code class="language-plaintext highlighter-rouge">Types::UserType</code> changes to:</p>
+<p>Now everytime the DNS server would respond to a query with <code class="language-plaintext highlighter-rouge">10.1.1.3</code>, if the request came from a Tailscale IP it will instead respond with <code class="language-plaintext highlighter-rouge">100.89.243.99</code>. This approach is more scalable if you have a large number of records that need this treatment.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="code-header">
-        <span data-label-text="Ruby"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">post_count</span>
-  <span class="no">AssociationCountLoader</span><span class="p">.</span><span class="nf">for</span><span class="p">(</span><span class="no">User</span><span class="p">,</span> <span class="ss">:posts</span><span class="p">).</span><span class="nf">load</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
-<span class="k">end</span>
-</pre></td></tr></tbody></table></code></div></div>
-
-<hr />
-
-<p><strong>2021-04-14 Update:</strong> Implementations of the loaders shown here are being maintained at <a href="https://github.com/jamesbrooks/graphql-batch-loaders">https://github.com/jamesbrooks/graphql-batch-loaders</a></p>
+<p>Hopefully this helps someone else out as the split-horizon documentation for Technitium DNS Server is a little sparse at the time of writing. I’m very happy with the solution and it has been working perfectly for me.</p>
 
   </div>
 
@@ -826,7 +794,7 @@
       <div class="post-meta mb-3">
         <i class="far fa-folder-open fa-fw me-1"></i>
         
-          <a href="/categories/ruby-on-rails/">Ruby on Rails</a>
+          <a href="/categories/networking/">Networking</a>
       </div>
     
 
@@ -836,19 +804,29 @@
         <i class="fa fa-tags fa-fw me-1"></i>
         
           <a
-            href="/tags/ruby/"
+            href="/tags/networking/"
             class="post-tag no-text-decoration"
-          >Ruby</a>
+          >Networking</a>
         
           <a
-            href="/tags/rails/"
+            href="/tags/dns/"
             class="post-tag no-text-decoration"
-          >Rails</a>
+          >DNS</a>
         
           <a
-            href="/tags/graphql/"
+            href="/tags/technitium-dns-server/"
             class="post-tag no-text-decoration"
-          >GraphQL</a>
+          >Technitium DNS Server</a>
+        
+          <a
+            href="/tags/tailscale/"
+            class="post-tag no-text-decoration"
+          >Tailscale</a>
+        
+          <a
+            href="/tags/split-horizon/"
+            class="post-tag no-text-decoration"
+          >Split Horizon</a>
         
       </div>
     
@@ -884,21 +862,21 @@
 
       
 
-      <a href="https://twitter.com/intent/tweet?text=Count%20loader%20for%20graphql-batch%20-%20James%20Brooks&url=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Fgraphql-batch-count-loader%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Technitium%20DNS%20Server%20with%20Tailscale%20-%20James%20Brooks&url=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Ftechnitium-dns-server-with-tailscale%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
         <i class="fa-fw fab fa-twitter"></i>
       </a>
     
 
       
 
-      <a href="https://www.facebook.com/sharer/sharer.php?title=Count%20loader%20for%20graphql-batch%20-%20James%20Brooks&u=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Fgraphql-batch-count-loader%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Technitium%20DNS%20Server%20with%20Tailscale%20-%20James%20Brooks&u=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Ftechnitium-dns-server-with-tailscale%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
         <i class="fa-fw fab fa-facebook-square"></i>
       </a>
     
 
       
 
-      <a href="https://t.me/share/url?url=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Fgraphql-batch-count-loader%2F&text=Count%20loader%20for%20graphql-batch%20-%20James%20Brooks" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+      <a href="https://t.me/share/url?url=https%3A%2F%2Fblog.jamesbrooks.net%2Fposts%2Ftechnitium-dns-server-with-tailscale%2F&text=Technitium%20DNS%20Server%20with%20Tailscale%20-%20James%20Brooks" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
         <i class="fa-fw fab fa-telegram"></i>
       </a>
     
@@ -1468,30 +1446,7 @@
   
 
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
     
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -1501,71 +1456,6 @@
 
 
 
-
-
-  <aside id="related-posts" aria-labelledby="related-label">
-    <h3 class="mb-4" id="related-label">Further Reading</h3>
-    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
-      
-        <article class="col">
-          <a href="/posts/enhanced-broadcasting-with-actioncable/" class="post-preview card h-100">
-            <div class="card-body">
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-  data-ts="1692887400"
-  data-df="ll"
-  
->
-  Aug 25, 2023
-</time>
-
-              <h4 class="pt-0 my-2">Enhanced broadcasting with Action Cable</h4>
-              <div class="text-muted">
-                <p>Render and broadcast payloads over ActionCable only to channels with active subscriptions</p>
-              </div>
-            </div>
-          </a>
-        </article>
-      
-        <article class="col">
-          <a href="/posts/default-transformations-for-active-storage-attachments/" class="post-preview card h-100">
-            <div class="card-body">
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-  data-ts="1591799400"
-  data-df="ll"
-  
->
-  Jun 11, 2020
-</time>
-
-              <h4 class="pt-0 my-2">Default transformations for ActiveStorage attachments</h4>
-              <div class="text-muted">
-                <p>Declare default transformations for ActiveStorage attachments</p>
-              </div>
-            </div>
-          </a>
-        </article>
-      
-    </nav>
-  </aside>
-  <!-- #related-posts -->
 
 
             
@@ -1578,22 +1468,18 @@
 
   
     <a
-      href="/posts/default-transformations-for-active-storage-attachments/"
+      href="/posts/pieinstance-in-unreal/"
       class="btn btn-outline-primary"
       aria-label="Older"
     >
-      <p>Default transformations for ActiveStorage attachments</p>
+      <p>PIE instance ID in Unreal Engine</p>
     </a>
   
 
   
-    <a
-      href="/posts/websockets-and-dedicated-servers/"
-      class="btn btn-outline-primary"
-      aria-label="Newer"
-    >
-      <p>Websockets and dedicated servers</p>
-    </a>
+    <div class="btn btn-outline-primary disabled" aria-label="Newer">
+      <p>-</p>
+    </div>
   
 </nav>
 
