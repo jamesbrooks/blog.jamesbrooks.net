@@ -1,33 +1,57 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>https://blog.jamesbrooks.net/</id>
+  <id>http://localhost:4000/</id>
   <title>James Brooks</title>
   <subtitle>Programming devblog covering whatever I'm currently working on, from Ruby on Rails through to Unreal Engine.</subtitle>
-  <updated>2024-12-05T23:09:41+10:30</updated>
+  <updated>2026-01-21T09:57:45+10:30</updated>
   <author>
     <name>James Brooks</name>
-    <uri>https://blog.jamesbrooks.net/</uri>
+    <uri>http://localhost:4000/</uri>
   </author>
-  <link rel="self" type="application/atom+xml" href="https://blog.jamesbrooks.net/feed.xml"/>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="en"
-    href="https://blog.jamesbrooks.net/"/>
+    href="http://localhost:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator>
-  <rights> © 2024 James Brooks </rights>
+  <rights> © 2026 James Brooks </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
 
   
   <entry>
+    <title>Migrating from iTerm2 to Ghostty</title>
+    <link href="http://localhost:4000/posts/migrating-from-iterm2-to-ghostty/" rel="alternate" type="text/html" title="Migrating from iTerm2 to Ghostty" />
+    <published>2026-01-20T00:00:00+10:30</published>
+  
+    <updated>2026-01-20T00:00:00+10:30</updated>
+  
+    <id>http://localhost:4000/posts/migrating-from-iterm2-to-ghostty/</id>
+    <content src="http://localhost:4000/posts/migrating-from-iterm2-to-ghostty/" />
+    <author>
+      <name>James Brooks</name>
+    </author>
+
+  
+    
+    <category term="Tools" />
+    
+  
+
+  <summary>After over a decade with iTerm2, I evaluated modern terminal emulators to fix Claude Code rendering issues and settled on Ghostty.</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>Technitium DNS Server with Tailscale</title>
-    <link href="https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/" rel="alternate" type="text/html" title="Technitium DNS Server with Tailscale" />
+    <link href="http://localhost:4000/posts/technitium-dns-server-with-tailscale/" rel="alternate" type="text/html" title="Technitium DNS Server with Tailscale" />
     <published>2024-12-05T00:00:00+10:30</published>
   
-    <updated>2024-12-05T00:00:00+10:30</updated>
+    <updated>2026-01-21T09:44:18+10:30</updated>
   
-    <id>https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/</id>
-    <content src="https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/" />
+    <id>http://localhost:4000/posts/technitium-dns-server-with-tailscale/</id>
+    <content src="http://localhost:4000/posts/technitium-dns-server-with-tailscale/" />
     <author>
       <name>James Brooks</name>
     </author>
@@ -45,13 +69,13 @@
   
   <entry>
     <title>PIE instance ID in Unreal Engine</title>
-    <link href="https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/" rel="alternate" type="text/html" title="PIE instance ID in Unreal Engine" />
+    <link href="http://localhost:4000/posts/pieinstance-in-unreal/" rel="alternate" type="text/html" title="PIE instance ID in Unreal Engine" />
     <published>2024-07-24T00:00:00+09:30</published>
   
-    <updated>2024-07-24T00:00:00+09:30</updated>
+    <updated>2026-01-21T09:44:18+10:30</updated>
   
-    <id>https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/</id>
-    <content src="https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/" />
+    <id>http://localhost:4000/posts/pieinstance-in-unreal/</id>
+    <content src="http://localhost:4000/posts/pieinstance-in-unreal/" />
     <author>
       <name>James Brooks</name>
     </author>
@@ -69,13 +93,13 @@
   
   <entry>
     <title>Access project version in Unreal Engine</title>
-    <link href="https://blog.jamesbrooks.net/posts/access-project-version-in-code/" rel="alternate" type="text/html" title="Access project version in Unreal Engine" />
+    <link href="http://localhost:4000/posts/access-project-version-in-code/" rel="alternate" type="text/html" title="Access project version in Unreal Engine" />
     <published>2024-06-28T00:00:00+09:30</published>
   
-    <updated>2024-07-18T16:06:24+09:30</updated>
+    <updated>2026-01-21T09:44:18+10:30</updated>
   
-    <id>https://blog.jamesbrooks.net/posts/access-project-version-in-code/</id>
-    <content src="https://blog.jamesbrooks.net/posts/access-project-version-in-code/" />
+    <id>http://localhost:4000/posts/access-project-version-in-code/</id>
+    <content src="http://localhost:4000/posts/access-project-version-in-code/" />
     <author>
       <name>James Brooks</name>
     </author>
@@ -93,13 +117,13 @@
   
   <entry>
     <title>Steam GetAuthTicketForWebApi in Unreal Engine</title>
-    <link href="https://blog.jamesbrooks.net/posts/steam-getauthticketforwebapi-in-unreal-engine/" rel="alternate" type="text/html" title="Steam GetAuthTicketForWebApi in Unreal Engine" />
+    <link href="http://localhost:4000/posts/steam-getauthticketforwebapi-in-unreal-engine/" rel="alternate" type="text/html" title="Steam GetAuthTicketForWebApi in Unreal Engine" />
     <published>2024-06-27T00:00:00+09:30</published>
   
-    <updated>2024-07-18T16:34:19+09:30</updated>
+    <updated>2026-01-21T09:44:18+10:30</updated>
   
-    <id>https://blog.jamesbrooks.net/posts/steam-getauthticketforwebapi-in-unreal-engine/</id>
-    <content src="https://blog.jamesbrooks.net/posts/steam-getauthticketforwebapi-in-unreal-engine/" />
+    <id>http://localhost:4000/posts/steam-getauthticketforwebapi-in-unreal-engine/</id>
+    <content src="http://localhost:4000/posts/steam-getauthticketforwebapi-in-unreal-engine/" />
     <author>
       <name>James Brooks</name>
     </author>
@@ -111,30 +135,6 @@
   
 
   <summary>How to call Steam&amp;#39;s GetAuthTicketForWebApi in Unreal Engine and expose it to Blueprints</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>Enhanced broadcasting with Action Cable</title>
-    <link href="https://blog.jamesbrooks.net/posts/enhanced-broadcasting-with-actioncable/" rel="alternate" type="text/html" title="Enhanced broadcasting with Action Cable" />
-    <published>2023-08-25T00:00:00+09:30</published>
-  
-    <updated>2024-07-18T16:34:19+09:30</updated>
-  
-    <id>https://blog.jamesbrooks.net/posts/enhanced-broadcasting-with-actioncable/</id>
-    <content src="https://blog.jamesbrooks.net/posts/enhanced-broadcasting-with-actioncable/" />
-    <author>
-      <name>James Brooks</name>
-    </author>
-
-  
-    
-    <category term="Ruby on Rails" />
-    
-  
-
-  <summary>Render and broadcast payloads over ActionCable only to channels with active subscriptions</summary>
 
   </entry>
 

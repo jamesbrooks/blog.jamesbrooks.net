@@ -34,8 +34,13 @@
       <meta property="og:image" content="{{ page.og_image }}" />
     {%- endcapture -%}
 
+    {%- capture twitter_image -%}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="twitter:image" content="{{ page.og_image }}" />
+    {%- endcapture -%}
+
     {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
-    {% assign new_meta_clip = og_image %}
+    {% assign new_meta_clip = og_image | append: twitter_image %}
     {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
 
   {% elsif site.social_preview_image %}

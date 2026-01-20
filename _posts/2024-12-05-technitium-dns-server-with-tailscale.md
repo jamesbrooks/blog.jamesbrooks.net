@@ -16,7 +16,6 @@ keywords:
   - Tailscale
   - Split Horizon
   - Homelab
-og_image: https://blog.jamesbrooks.net/assets/img/posts/2024-12-05-technitium-dns-server-with-tailscale/thumb.png
 ---
 
 I have been using [Tailscale](https://tailscale.com/) for a while now to provide secure access to my home network from anywhere, I run it constantly on my work laptop which I use both at home and in the office as well as on many devices within my home network. Within my home network as well I have been running Pi-hole to provide network-wide ad-blocking, and for the interest of this article, DNS resolution.

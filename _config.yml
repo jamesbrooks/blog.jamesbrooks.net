@@ -104,6 +104,34 @@ pwa:
 
 paginate: 10
 
+# OG Image Generation
+plugins:
+  - jekyll-seo-tag
+  - jekyll-og-image
+
+og_image:
+  output_dir: "assets/images/og"
+
+  canvas:
+    background_color: "#1b1b1e"
+    width: 1200
+    height: 630
+
+  header:
+    font_family: "Helvetica, Bold"
+    color: "#FFFFFF"
+
+  content:
+    font_family: "Helvetica"
+    color: "#b0b0b0"
+
+  border_bottom:
+    width: 10
+    fill: ["#6366f1", "#8b5cf6", "#a855f7"]
+
+  domain: "blog.jamesbrooks.net"
+  image: "/assets/img/avatar.webp"
+
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
@@ -167,17 +195,15 @@ compress_html:
 exclude:
   - "*.gem"
   - "*.gemspec"
-  - tools
   - README.md
-  - CHANGELOG.md
   - LICENSE
-  - rollup.config.js
+  - CLAUDE.md
+  - _config_dev.yml
+  - indexnow_submit.sh
+  - docs
   - node_modules
-  - package*.json
   - docker-compose.yml
   - nginx.conf
-  - generate_post_thumbs.sh
-  - "**/thumb_orig.png"
 
 jekyll-archives:
   enabled: [categories, tags]

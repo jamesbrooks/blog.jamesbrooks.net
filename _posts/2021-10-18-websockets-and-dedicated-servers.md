@@ -17,7 +17,6 @@ keywords:
   - Error
   - Crash
   - nullptr
-og_image: https://blog.jamesbrooks.net/assets/img/posts/2021-10-18-websockets-and-dedicated-servers/thumb.png
 ---
 
 Quick post!

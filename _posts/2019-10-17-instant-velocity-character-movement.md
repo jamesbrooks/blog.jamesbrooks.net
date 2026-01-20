@@ -11,7 +11,6 @@ keywords:
   - Character Movement
   - Velocity
   - Acceleration
-og_image: https://blog.jamesbrooks.net/assets/img/posts/2019-10-17-instant-velocity-character-movement/thumb.png
 ---
 
 Unreal Engine's [CharacterMovementComponent](https://docs.unrealengine.com/en-US/Gameplay/Networking/CharacterMovementComponent/index.html) is a fantastic component for easily granting a Pawn network-replicated and client-predictive movement with a lot of functionality out of the box that often just works. Though sometimes the way it performs movement is not what we want.

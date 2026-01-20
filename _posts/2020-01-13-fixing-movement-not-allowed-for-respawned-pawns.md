@@ -16,7 +16,6 @@ keywords:
   - SimpleMoveToLocation
   - UPathFollowingComponent
   - UNavMovementComponent
-og_image: https://blog.jamesbrooks.net/assets/img/posts/2020-01-13-fixing-movement-not-allowed-for-respawned-pawns/thumb.png
 ---
 
 Have you ran into the issue "SimpleMove failed for X: movement not allowed" when trying to call

@@ -15,7 +15,6 @@ keywords:
   - Redis
   - broadcast_to
   - block
-og_image: https://blog.jamesbrooks.net/assets/img/posts/2023-08-25-enhanced-broadcasting-with-actioncable/thumb.png
 ---
 
 When using [Action Cable](https://guides.rubyonrails.org/action_cable_overview.html) sometimes it is useful to broadcast to a channel only if there are active subscriptions. This can be useful to avoid unnecessary processing and network traffic, as well as reduce the load on the server in cases where generating the broadcast payload is expensive (e.g. a large chunk of HTML).

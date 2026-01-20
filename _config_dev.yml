@@ -1,0 +1,7 @@
+# Development overrides
+# Usage: bundle exec jekyll serve --config _config.yml,_config_dev.yml
+
+# Exclude slow plugins for faster rebuilds
+plugins:
+  - jekyll-seo-tag
+  # jekyll-og-image excluded - run `bundle exec jekyll build` to test images

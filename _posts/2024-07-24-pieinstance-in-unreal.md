@@ -10,7 +10,6 @@ tags:
   - PIEInstance
 keywords:
   - Unreal Engine
-og_image: https://blog.jamesbrooks.net/assets/img/posts/2024-07-24-pieinstance-in-unreal/thumb.png
 ---
 
 When Playing in Editor (PIE), in particular with multiple local clients, it can be useful to know which instance of the game you are currently running. This can be useful for debugging, logging, or other purposes (for example I have used this id to communicate to a backend server to authenticate the local clients and have consistent player data served to them).
