@@ -1,17 +1,17 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://localhost:4000/</id>
+  <id>https://blog.jamesbrooks.net/</id>
   <title>James Brooks</title>
   <subtitle>Programming devblog covering whatever I'm currently working on, from Ruby on Rails through to Unreal Engine.</subtitle>
-  <updated>2026-01-21T09:57:45+10:30</updated>
+  <updated>2026-02-04T17:39:28+10:30</updated>
   <author>
     <name>James Brooks</name>
-    <uri>http://localhost:4000/</uri>
+    <uri>https://blog.jamesbrooks.net/</uri>
   </author>
-  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="self" type="application/atom+xml" href="https://blog.jamesbrooks.net/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="en"
-    href="http://localhost:4000/"/>
+    href="https://blog.jamesbrooks.net/"/>
   <generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator>
   <rights> © 2026 James Brooks </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
@@ -20,14 +20,38 @@
 
   
   <entry>
+    <title>Reviving 32-bit Adobe AIR Apps for Modern macOS</title>
+    <link href="https://blog.jamesbrooks.net/posts/reviving-32-bit-adobe-air-apps-for-modern-macos/" rel="alternate" type="text/html" title="Reviving 32-bit Adobe AIR Apps for Modern macOS" />
+    <published>2026-02-04T00:00:00+10:30</published>
+  
+    <updated>2026-02-04T00:00:00+10:30</updated>
+  
+    <id>https://blog.jamesbrooks.net/posts/reviving-32-bit-adobe-air-apps-for-modern-macos/</id>
+    <content src="https://blog.jamesbrooks.net/posts/reviving-32-bit-adobe-air-apps-for-modern-macos/" />
+    <author>
+      <name>James Brooks</name>
+    </author>
+
+  
+    
+    <category term="macOS" />
+    
+  
+
+  <summary>How to repackage old 32-bit Adobe AIR applications to run on macOS Catalina and later using the HARMAN AIR SDK.</summary>
+
+  </entry>
+
+  
+  <entry>
     <title>Migrating from iTerm2 to Ghostty</title>
-    <link href="http://localhost:4000/posts/migrating-from-iterm2-to-ghostty/" rel="alternate" type="text/html" title="Migrating from iTerm2 to Ghostty" />
+    <link href="https://blog.jamesbrooks.net/posts/migrating-from-iterm2-to-ghostty/" rel="alternate" type="text/html" title="Migrating from iTerm2 to Ghostty" />
     <published>2026-01-20T00:00:00+10:30</published>
   
     <updated>2026-01-20T00:00:00+10:30</updated>
   
-    <id>http://localhost:4000/posts/migrating-from-iterm2-to-ghostty/</id>
-    <content src="http://localhost:4000/posts/migrating-from-iterm2-to-ghostty/" />
+    <id>https://blog.jamesbrooks.net/posts/migrating-from-iterm2-to-ghostty/</id>
+    <content src="https://blog.jamesbrooks.net/posts/migrating-from-iterm2-to-ghostty/" />
     <author>
       <name>James Brooks</name>
     </author>
@@ -45,13 +69,13 @@
   
   <entry>
     <title>Technitium DNS Server with Tailscale</title>
-    <link href="http://localhost:4000/posts/technitium-dns-server-with-tailscale/" rel="alternate" type="text/html" title="Technitium DNS Server with Tailscale" />
+    <link href="https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/" rel="alternate" type="text/html" title="Technitium DNS Server with Tailscale" />
     <published>2024-12-05T00:00:00+10:30</published>
   
     <updated>2026-01-21T09:44:18+10:30</updated>
   
-    <id>http://localhost:4000/posts/technitium-dns-server-with-tailscale/</id>
-    <content src="http://localhost:4000/posts/technitium-dns-server-with-tailscale/" />
+    <id>https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/</id>
+    <content src="https://blog.jamesbrooks.net/posts/technitium-dns-server-with-tailscale/" />
     <author>
       <name>James Brooks</name>
     </author>
@@ -69,13 +93,13 @@
   
   <entry>
     <title>PIE instance ID in Unreal Engine</title>
-    <link href="http://localhost:4000/posts/pieinstance-in-unreal/" rel="alternate" type="text/html" title="PIE instance ID in Unreal Engine" />
+    <link href="https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/" rel="alternate" type="text/html" title="PIE instance ID in Unreal Engine" />
     <published>2024-07-24T00:00:00+09:30</published>
   
     <updated>2026-01-21T09:44:18+10:30</updated>
   
-    <id>http://localhost:4000/posts/pieinstance-in-unreal/</id>
-    <content src="http://localhost:4000/posts/pieinstance-in-unreal/" />
+    <id>https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/</id>
+    <content src="https://blog.jamesbrooks.net/posts/pieinstance-in-unreal/" />
     <author>
       <name>James Brooks</name>
     </author>
@@ -93,13 +117,13 @@
   
   <entry>
     <title>Access project version in Unreal Engine</title>
-    <link href="http://localhost:4000/posts/access-project-version-in-code/" rel="alternate" type="text/html" title="Access project version in Unreal Engine" />
+    <link href="https://blog.jamesbrooks.net/posts/access-project-version-in-code/" rel="alternate" type="text/html" title="Access project version in Unreal Engine" />
     <published>2024-06-28T00:00:00+09:30</published>
   
     <updated>2026-01-21T09:44:18+10:30</updated>
   
-    <id>http://localhost:4000/posts/access-project-version-in-code/</id>
-    <content src="http://localhost:4000/posts/access-project-version-in-code/" />
+    <id>https://blog.jamesbrooks.net/posts/access-project-version-in-code/</id>
+    <content src="https://blog.jamesbrooks.net/posts/access-project-version-in-code/" />
     <author>
       <name>James Brooks</name>
     </author>
@@ -111,30 +135,6 @@
   
 
   <summary>How to access the project&amp;#39;s version in Unreal Engine and expose it to Blueprints</summary>
-
-  </entry>
-
-  
-  <entry>
-    <title>Steam GetAuthTicketForWebApi in Unreal Engine</title>
-    <link href="http://localhost:4000/posts/steam-getauthticketforwebapi-in-unreal-engine/" rel="alternate" type="text/html" title="Steam GetAuthTicketForWebApi in Unreal Engine" />
-    <published>2024-06-27T00:00:00+09:30</published>
-  
-    <updated>2026-01-21T09:44:18+10:30</updated>
-  
-    <id>http://localhost:4000/posts/steam-getauthticketforwebapi-in-unreal-engine/</id>
-    <content src="http://localhost:4000/posts/steam-getauthticketforwebapi-in-unreal-engine/" />
-    <author>
-      <name>James Brooks</name>
-    </author>
-
-  
-    
-    <category term="Unreal Engine" />
-    
-  
-
-  <summary>How to call Steam&amp;#39;s GetAuthTicketForWebApi in Unreal Engine and expose it to Blueprints</summary>
 
   </entry>
 
